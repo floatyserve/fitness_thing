@@ -21,7 +21,7 @@ const TrainingModel = {
 
   // Fetch all training sessions
   async getAllTrainings() {
-    const query = 'SELECT * FROM training ORDER BY id DESC;';
+    const query = 'SELECT * FROM training ORDER BY timestamp DESC;';
     const result = await pool.query(query);
     return result.rows;
   },
