@@ -17,7 +17,7 @@ function PaginatedList() {
         console.error("Error fetching data:", error);
       }
     };
-  
+
     fetchData();
   }, []);
 
@@ -82,34 +82,35 @@ function PaginatedList() {
           </tr>
         </thead>
         <tbody>
-        {currentItems.map((item, idx) => {
-          // Parse and format the timestamp
-          let formattedTimestamp = new Date(item.timestamp).toLocaleString("sk-SK", {
-            weekday: "long", 
-            year: "numeric", 
-            month: "short",   
-            day: "numeric",   
-            hour: "numeric",  
-            minute: "2-digit", 
-          });
+          {currentItems.map((item, idx) => {
+            // Parse and format the timestamp
+            let formattedTimestamp = new Date(item.timestamp).toLocaleString("sk-SK", {
+              timeZone: "UTC",
+              weekday: "long",
+              year: "numeric",
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "2-digit",
+            });
 
-          formattedTimestamp = formattedTimestamp
-          .split(" ")
-          .map((word) =>
-             word.charAt(0).toUpperCase() + word.slice(1)
-          )
-          .join(" ");
+            formattedTimestamp = formattedTimestamp
+              .split(" ")
+              .map((word) =>
+                word.charAt(0).toUpperCase() + word.slice(1)
+              )
+              .join(" ");
 
-          return (
-            <tr key={idx}>
-              <td>{formattedTimestamp}</td>
-              <td>{item.minpulse}</td>
-              <td>{item.maxpulse}</td>
-              <td>{item.avgpulse}</td>
-              <td>{item.steps}</td>
-            </tr>
-          );
-        })}
+            return (
+              <tr key={idx}>
+                <td>{formattedTimestamp}</td>
+                <td>{item.minpulse}</td>
+                <td>{item.maxpulse}</td>
+                <td>{item.avgpulse}</td>
+                <td>{item.steps}</td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
 
