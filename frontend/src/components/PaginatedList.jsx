@@ -74,7 +74,7 @@ function PaginatedList() {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Timestamp</th>
+            <th>Date</th>
             <th>Min Pulse</th>
             <th>Max Pulse</th>
             <th>Avg Pulse</th>
