@@ -6,7 +6,12 @@ services:
     ports:
       - "5000:5000"
     environment:
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/fitness
+      - PORT=5000
+      - DATABASE_URL=postgresql://postgres:postgres@postgres-db:5432/fitness
+      - MQTT_BROKER_URL=http://147.232.205.176/mqttexplorer/
+      - MQTT_TOPIC=fitness/training
+      - MQTT_USERNAME=maker
+      - MQTT_PASSWORD=mother.mqtt.password
     depends_on:
       - db
 
