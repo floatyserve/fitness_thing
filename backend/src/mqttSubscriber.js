@@ -29,12 +29,14 @@ client.on('message', async (topic, message) => {
 
         const training = JSON.parse(message.toString());
 
+        console.log('Raw message:', message.toString());
+        console.log('Parsed training object:', training);
         // Validate message fields
         if (
-            !training.maxpulse ||
-            !training.minpulse ||
-            !training.avgpulse ||
-            !training.steps ||
+            typeof training.maxpulse !== 'number' ||
+            typeof training.minpulse !== 'number' ||
+            typeof training.avgpulse !== 'number' ||
+            typeof training.steps !== 'number' ||
             !training.timestamp
         ) {
             console.error('Invalid message format:', training);
