@@ -20,7 +20,7 @@ const TrainingController = {
       res.status(200).json(trainings);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Failed to fetch training sessions' });
+      res.status(500).json({ error: 'Failed to fetch training sessions getTrainings' });
     }
   },
 
@@ -35,9 +35,31 @@ const TrainingController = {
       res.status(200).json(training);
     } catch (error) {
       console.error(error);
-      res.status(500).json({ error: 'Failed to fetch training session' });
+      res.status(500).json({ error: 'Failed to fetch training session getTrainingById' });
     }
   },
+
+  // Fetch all average pulse values
+  async getAllAvgPulse(req, res) {
+    try {
+      const avgPulse = await TrainingModel.getAllAvgPulse();
+      res.status(200).json(avgPulse);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Failed to fetch average pulse values' });
+    }
+  },
+
+  // Fetch all steps values
+  async getSteps(req, res) {
+    try {
+      const avgSteps = await TrainingModel.getSteps();
+      res.status(200).json(avgSteps);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Failed to fetch average steps values' });
+    }
+  }
 };
 
 module.exports = TrainingController;

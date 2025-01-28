@@ -36,8 +36,7 @@ client.on('message', async (topic, message) => {
             typeof training.maxpulse !== 'number' ||
             typeof training.minpulse !== 'number' ||
             typeof training.avgpulse !== 'number' ||
-            typeof training.steps !== 'number' ||
-            !training.timestamp
+            typeof training.steps !== 'number'
         ) {
             console.error('Invalid message format:', training);
             return;

@@ -13,7 +13,7 @@ const TrainingModel = {
       training.minpulse,
       training.avgpulse,
       training.steps,
-      training.timestamp,
+      new Date()
     ];
     const result = await pool.query(query, values);
     return result.rows[0];
@@ -32,6 +32,20 @@ const TrainingModel = {
     const result = await pool.query(query, [id]);
     return result.rows[0];
   },
+
+  // Fetch all average pulse values
+  async getAllAvgPulse() {
+    const query = 'SELECT avgpulse, timestamp FROM training';
+    const result = await pool.query(query);
+    return result.rows;
+  },
+
+  // Fetch all steps values
+  async getSteps() {
+    const query = 'SELECT steps, timestamp FROM training';
+    const result = await pool.query(query);
+    return result.rows;
+  }
 };
 
 module.exports = TrainingModel;
